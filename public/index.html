@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="form">
+        <form action="clases/crear" method="POST">
+            <span class="close">X</span>
+            <h3>Nuevo bloque</h3>
+           
+            <label for="fecha">Fecha de la semana</label>
+            <div class="custom-select">
+             <select name="fecha" id="fecha" required>
+                
+                <!-- Opciones generadas dinámicamente con JavaScript -->
+            </select>
+            </div>
+            <label for="materia">Materia</label>
+            <div class="custom-select">
+                <select name="materia" id="materia">
+                    <option value="js">Javascript</option>
+                    <option value="diseno">Diseño gráfico</option>
+                    <option value="toolbox">Toolbox</option>
+                    <option value="html">HTML</option>
+                    <option value="css">CSS</option>
+                </select>
+            </div>
+
+            <label for="dia">Día</label>
+            <div class="custom-select">
+                <select name="dia" id="dia">
+                    <option value="lunes">Lunes</option>
+                    <option value="martes">Martes</option>
+                    <option value="miercoles">Miercoles</option>
+                    <option value="jueves">Jueves</option>
+                    <option value="viernes">Viernes</option>
+                </select>
+            </div>
+
+            <label for="franja">Franja horaria</label>
+            <div class="custom-select">
+                <select name="franja" id="franja">
+                    <option value="09:30 11:30">09:30 - 11:30</option>
+                    <option value="12:00 13:15">12:00 - 13:15</option>
+                    <option value="13:30 14:30">13:30 - 14:30</option>
+                </select>
+            </div>
+            <div>
+                <input type="submit" class="add" value="Añadir">
+            </div>
+        </form>
+    </div>
+    <nav class="menu">
+            <button class="add-new">Nuevo bloque</button>
+    </nav>
+    <h1 class="fecha">Semana del <span></span> </h1>
+    <div class="columnas-dias">
+        <h4>Lunes</h4>
+        <h4>Martes</h4>
+        <h4>Miercoles</h4>
+        <h4>Jueves</h4>
+        <h4>Viernes</h4>
+    </div>
+    <div class="calendario">   
+        <div class="dia lunes"></div>        
+        <div class="dia martes"></div>       
+        <div class="dia miercoles"></div>      
+        <div class="dia jueves"></div>     
+        <div class="dia viernes"></div>
+    </div>
+    <script src="js/app.js"></script> 
+</body>
+</html>

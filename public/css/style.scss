@@ -1,0 +1,253 @@
+//variables
+$color-corp: #035A83;
+$color-text: #fff;
+
+//botones
+
+%button{
+    background-color: #000;
+    color:$color-text;
+    cursor: pointer;
+    margin:2rem;
+    padding: 10px 20px;
+    border-radius: 2rem;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+    
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+html{
+    font-size: 62.5%;
+}
+
+body {
+    min-height: 100vh;
+    background-color: $color-corp;
+    background-image: url('../images/bg-pattern-top.svg'), url('../images/bg-pattern-bottom.svg');
+    background-repeat: no-repeat, no-repeat;
+    background-position: right 50vw bottom 50vh, left 50vw top 50vh;
+    text-align: center;
+    color: $color-text;
+}
+
+.menu {
+    display: flex;
+    justify-content: flex-end;
+
+    & button{      
+        @extend %button;
+        
+        &:hover{
+            opacity: 0.7;
+        }    
+    }
+}
+
+
+h1{
+    font-size: 3rem;
+    padding: 2rem;
+}
+
+h3,h4{
+    text-align: center;
+    padding: 2rem;
+    font-size: 2rem;
+}
+
+
+
+article{
+    background-color: red;
+    width: 100px;
+    height: 100px;
+}
+
+
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    z-index: -10;
+}
+
+.form-show {
+    z-index: 1;
+    display: flex;
+}
+
+form {
+    position: relative;
+    background-color: rgb(197, 197, 197);
+    width: 410px;
+    padding: 2.5rem 3rem;
+    border-radius: 2rem;
+    text-align: left;
+    font-size: 1.4rem;
+
+    & div{
+        padding: 1rem 0;
+    }
+    
+    & label{
+        width:120px;
+        font-weight:bold;
+        display:inline-block;
+    }
+
+    & .custom-select{
+        position:relative;
+        width:22rem;
+        display:inline-block;
+    }
+
+    & .custom-select::after{
+        content:"\f0d7";
+        font-family: "FontAwesome";
+        right:44px;
+        position:absolute;
+        pointer-events:none;
+        font-size:2rem;
+        color:#000;
+    }
+
+    & select{
+        /*reset styles applied by the browser*/
+        appearance: none;
+        outline:0;
+        border: 0;
+        box-shadow: none;
+        
+        /*my styles*/
+        width:18rem;
+        padding:0.8rem 1rem;
+        border-radius: 0.4rem;
+    }
+
+    & select:hover{
+        cursor:pointer;
+    }
+      
+      /*remove arrow IE*/
+    & select::-ms-expand {
+        display: none;
+    }
+
+    & button{      
+        @extend %button;
+        
+        &:hover{
+            opacity: 0.7;
+        }    
+    }
+
+    & .close{
+        position: absolute;
+        right: 0;
+        top:0;
+        color: #000;
+        font-size: 2rem;
+        font-weight: bold;
+        padding: .6rem;
+        cursor: pointer;
+    }
+    
+}
+
+.columnas-dias{
+    display: flex;
+    justify-content: space-around;
+}
+
+.calendario{
+    display: flex;
+    justify-content: space-around;
+
+    & .dia{
+        width: 16%;
+        border: 2px solid $color-text;
+        border-radius: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        & article{
+           width: 80%;
+           margin: .6rem 0;
+           position: relative;
+           display: flex;
+           justify-content: flex-end;
+
+           .icon-button {
+                background-image: url(../images/trash-can-solid.svg);
+                background-repeat: no-repeat;
+                background-size: contain;
+                width: 12px;
+                height: 12px;
+                position: absolute;
+                cursor: pointer;
+                top: 5px;
+            }
+          
+
+           &::before {
+            content: '';
+            position: absolute;
+            top: 0; 
+            right: 0; 
+            bottom: 0; 
+            left: 0;
+            z-index: -1;
+            border-width: 4px;
+            border-style: solid;
+            border-image: linear-gradient(to right, darkblue, darkorchid) 1;
+            transform: skew(-15deg);
+          }
+        }
+
+        & .js{
+            background: url(../images/javascript.png) no-repeat 10% center;
+            background-size: 80px;
+        }
+
+        & .diseno{
+            background: url(../images/inkscape.png) no-repeat 10% center;
+            background-size: 80px;
+        }
+
+        & .html{
+            background: url(../images/html5.png) no-repeat 10% center;
+            background-size: 80px;
+        }
+
+        & .css{
+            background: url(../images/css3.png) no-repeat 10% center;
+            background-size: 80px;
+        }
+
+        & .toolbox{
+            background: url(../images/toolbox.png) no-repeat 10% center;
+            background-size: 80px;
+        }
+
+        & .materia-franja{
+            width: 60%;
+        }
+    }
+}
