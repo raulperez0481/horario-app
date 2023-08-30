@@ -32,10 +32,17 @@ async function obtenerClasesFront() {
     const clasesSemanaActual = clases.filter((clase) => {
       const fechaInicioClase = clase.fecha.split(" - ")[0];
       const fechaFinClase = clase.fecha.split(" - ")[1];
-      //console.log(fechaInicioClase);/*  03/07/2023  */ 
-      //console.log(fechaFinClase);/*  09/07/2023  */ 
-      const fechaInicioSemanaClase = new Date(fechaInicioClase);
-      const fechaFinSemanaClase = new Date(fechaFinClase); 
+      console.log(fechaInicioClase);/*  03/07/2023  */ 
+      console.log(fechaFinClase);/*  09/07/2023  */ 
+      const partesFechaInicio = fechaInicioClase.split("/");
+      const partesFechaFin = fechaFinClase.split("/");
+
+      const fechaInicioSemanaClase = new Date(`${partesFechaInicio[2]}-${partesFechaInicio[1]}-${partesFechaInicio[0]}`);
+
+      const fechaFinSemanaClase = new Date(`${partesFechaFin[2]}-${partesFechaFin[1]}-${partesFechaFin[0]}`); 
+
+      console.log("fecha inicio de la semana:",fechaInicioSemanaClase);
+      console.log("fecha fin de la semana:",fechaFinSemanaClase);
       
       // Comparar las fechas
       if (fechaInicioSemanaClase <= semanaActual.fechaFin && fechaFinSemanaClase >= semanaActual.fechaInicio) {
@@ -113,12 +120,12 @@ async function obtenerClasesFront() {
 const fechaSelect = document.getElementById('fecha');
 
 // Generar las opciones de semanas del mes de julio
-const weeksInMonth = getWeeksInMonth(new Date().getFullYear(), 6); // 6 representa el mes de julio
+const weeksInMonth = getWeeksInMonth(new Date().getFullYear(), 8); // 6 representa el mes de julio
 
 for (let i = 0; i < weeksInMonth; i++) {
   const option = document.createElement('option');
-  const startDate = getStartDateOfWeek(i, new Date().getFullYear(), 6); // 6 representa el mes de julio
-  const endDate = getEndDateOfWeek(i, new Date().getFullYear(), 6); // 6 representa el mes de julio
+  const startDate = getStartDateOfWeek(i, new Date().getFullYear(),8 ); // 6 representa el mes de julio
+  const endDate = getEndDateOfWeek(i, new Date().getFullYear(), 8); // 6 representa el mes de julio
   const lunes = formatDate(startDate);
   const domingo = formatDate(endDate);
   option.value = `${lunes} - ${domingo}`;
