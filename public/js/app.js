@@ -43,6 +43,9 @@ async function obtenerClasesFront() {
 
       console.log("fecha inicio de la semana:",fechaInicioSemanaClase);
       console.log("fecha fin de la semana:",fechaFinSemanaClase);
+
+      console.log("fecha inicio de la semana a comparar:",semanaActual.fechaInicio);
+      console.log("fecha fin de la semana a comparar:",semanaActual.fechaFin);
       
       // Comparar las fechas
       if (fechaInicioSemanaClase <= semanaActual.fechaFin && fechaFinSemanaClase >= semanaActual.fechaInicio) {
@@ -176,14 +179,21 @@ const formSection = document.querySelector(".form");
 
 //functions
 
-
 function firstLastDayCurrentWeek() {
   const date = new Date();
   const day = date.getDay();
   const first = date.getDate() - day + 1;
   const last = first + 6;
-  const firstday = new Date(date.setDate(first));
-  const lastday = new Date(date.setDate(last));
+
+  // Copia la fecha actual para evitar modificar la fecha original.
+  const firstday = new Date(date);
+  const lastday = new Date(date);
+
+  // Establece el primer día de la semana.
+  firstday.setDate(first);
+
+  // Establece el último día de la semana sumando 6 días al primer día.
+  lastday.setDate(first + 6);
 
   return {
     fechaInicio: firstday,
@@ -191,31 +201,6 @@ function firstLastDayCurrentWeek() {
   };
 }
 
-
-
-
-/* function firstLastDayCurrentWeek(){
-    const date = new Date();
-
-    //numero del dia actual de la semana
-    const day= date.getDay();
-
-    //numero del primer dia de la semana actual, sin el +1, empezaría por Sunday (domingo)
-    const first = (date.getDate() - day) +1;
-
-    //numero del ultimo día de la semana actual
-    const last = first + 6; 
-
-    //fechas completas del primer y último día de la semana
-    const firstday = new Date(date.setDate(first));
-    const lastday = new Date(date.setDate(last));
-    
-    //formateo las fechas completas dd/mm/aaaa
-    const desde = firstday.getDate() + "/" + (firstday.getMonth() +1) + "/" + firstday.getFullYear();
-    const hasta = lastday.getDate() + "/" + (lastday.getMonth() +1) + "/" + lastday.getFullYear();
-
-    return desde  + " al " + hasta;
-} */
 
 /* Show and close form */
 openForm.addEventListener('click', (e) => {
